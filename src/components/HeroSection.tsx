@@ -28,7 +28,7 @@ const HeroSection = () => {
   const textY = useTransform(scrollYProgress, [0, 1], [0, -80]);
   const opacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
 
-  const titleWords = "Obras, Reforma
+  const titleWords = ["Obras,", "Reformas"];
 
   return (
     <section ref={ref} id="inicio" className="relative min-h-screen flex items-center justify-center overflow-hidden">
