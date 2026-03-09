@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import logoImg from "@/assets/logo-reformart.png";
 
 const Footer = () => (
   <motion.footer
@@ -17,12 +18,9 @@ const Footer = () => (
       transition={{ duration: 1.2, ease: "easeInOut" }}
     />
     <div className="container mx-auto max-w-6xl flex flex-col md:flex-row items-center justify-between gap-4 text-sm">
-      <motion.p
-        className="font-display text-lg font-bold"
-        whileHover={{ scale: 1.05 }}
-      >
-        Reform<span className="text-primary">Art</span>
-      </motion.p>
+      <motion.div whileHover={{ scale: 1.05 }}>
+        <img src={logoImg} alt="ReformArt logo" className="h-10 w-auto brightness-0 invert" />
+      </motion.div>
       <motion.p
         className="text-background/60"
         initial={{ opacity: 0, y: 10 }}

@@ -61,9 +61,9 @@ const AboutSection = () => (
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          ReformArt es una empresa especializada en reformas integrales con atención personalizada.
+          ReformArt es una empresa especializada en obras, reformas e instalaciones con atención personalizada.
           Utilizamos materiales de la más alta calidad y nos comprometemos con los plazos de entrega.
-          Nuestro objetivo es transformar tu hogar en el espacio que siempre has soñado.
+          Presupuestos sin compromiso. Nuestro objetivo es transformar tu hogar en el espacio que siempre has soñado.
         </motion.p>
       </motion.div>
 

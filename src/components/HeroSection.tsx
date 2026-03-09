@@ -28,7 +28,7 @@ const HeroSection = () => {
   const textY = useTransform(scrollYProgress, [0, 1], [0, -80]);
   const opacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
 
-  const titleWords = "Reformas profesionales".split(" ");
+  const titleWords = ["Obras,", "Reformas"];
 
   return (
     <section ref={ref} id="inicio" className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -99,7 +99,7 @@ const HeroSection = () => {
           animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
           transition={{ duration: 0.8, delay: 0.7 }}
         >
-          <span className="text-gradient inline-block">para tu hogar</span>
+          <span className="text-gradient inline-block">e Instalaciones</span>
         </motion.h1>
 
         <motion.p
@@ -108,7 +108,7 @@ const HeroSection = () => {
           transition={{ duration: 0.8, delay: 0.9 }}
           className="text-lg md:text-xl text-primary-foreground/80 max-w-2xl mx-auto mb-10"
         >
-          En ReformArt transformamos tus ideas en espacios reales
+          En RePresupuestos sin compromiso · Tormamos tus ideas en espacios reales
         </motion.p>
 
         <motion.div
