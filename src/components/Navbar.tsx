@@ -44,10 +44,10 @@ const Navbar = () => {
         <div className="container mx-auto flex items-center justify-between h-16 px-4">
           <motion.a
             href="#inicio"
-            className="text-2xl font-display font-bold tracking-tight"
+            className="flex items-center gap-2"
             whileHover={{ scale: 1.05 }}
           >
-            Reform<span className="text-primary">Art</span>
+            <img src={logoImg} alt="ReformArt logo" className="h-10 w-auto" />
           </motion.a>
 
           {/* Desktop */}

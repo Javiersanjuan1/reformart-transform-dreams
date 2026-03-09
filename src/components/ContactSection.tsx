@@ -38,7 +38,7 @@ const ContactSection = () => {
           <h2 className="text-3xl md:text-5xl font-display font-bold mb-4">
             <span className="text-gradient">Contacta</span> con nosotros
           </h2>
-          <p className="text-muted-foreground text-lg">Pide tu presupuesto sin compromiso</p>
+          <p className="text-muted-foreground text-lg">Presupuestos sin compromiso</p>
         </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-12">
