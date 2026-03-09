@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Eye } from "lucide-react";
 import galleryBathroom from "@/assets/gallery-bathroom.jpg";
 import galleryKitchen from "@/assets/gallery-kitchen.jpg";
 import galleryLiving from "@/assets/gallery-living.jpg";
@@ -31,22 +32,31 @@ const GallerySection = () => (
         {images.map((img, i) => (
           <motion.div
             key={img.label}
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, scale: 0.9, rotate: i % 2 === 0 ? -2 : 2 }}
+            whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: i * 0.1 }}
-            className="relative group overflow-hidden rounded-xl aspect-[4/3]"
+            transition={{ duration: 0.6, delay: i * 0.12 }}
+            whileHover={{ scale: 1.03 }}
+            className="relative group overflow-hidden rounded-xl aspect-[4/3] cursor-pointer"
           >
-            <img
+            <motion.img
               src={img.src}
               alt={img.alt}
-              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+              className="w-full h-full object-cover"
               loading="lazy"
+              whileHover={{ scale: 1.15 }}
+              transition={{ duration: 0.6 }}
             />
-            <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/40 transition-colors duration-300 flex items-end">
-              <span className="px-6 py-4 text-primary-foreground font-display text-xl font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300 translate-y-4 group-hover:translate-y-0">
-                {img.label}
-              </span>
+            <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/50 transition-colors duration-300 flex flex-col items-center justify-center">
+              <motion.div
+                className="flex flex-col items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                initial={false}
+              >
+                <Eye className="w-8 h-8 text-primary-foreground" />
+                <span className="text-primary-foreground font-display text-xl font-semibold">
+                  {img.label}
+                </span>
+              </motion.div>
             </div>
           </motion.div>
         ))}
