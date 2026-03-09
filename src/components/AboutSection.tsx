@@ -1,11 +1,45 @@
-import { motion } from "framer-motion";
+import { motion, useMotionValue, useTransform, animate } from "framer-motion";
 import { ShieldCheck, Clock, Gem } from "lucide-react";
+import { useEffect, useRef } from "react";
+import { useInView } from "framer-motion";
 
 const features = [
   { icon: ShieldCheck, title: "Confianza", desc: "Más de 10 años de experiencia avalan nuestro trabajo." },
   { icon: Clock, title: "Puntualidad", desc: "Nos comprometemos con los plazos acordados." },
   { icon: Gem, title: "Calidad", desc: "Materiales de primera y acabados impecables." },
 ];
+
+const stats = [
+  { value: 500, suffix: "+", label: "Proyectos realizados" },
+  { value: 10, suffix: "+", label: "Años de experiencia" },
+  { value: 98, suffix: "%", label: "Clientes satisfechos" },
+];
+
+const AnimatedCounter = ({ value, suffix }: { value: number; suffix: string }) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
+  const count = useMotionValue(0);
+  const rounded = useTransform(count, (v) => Math.round(v));
+  const display = useTransform(rounded, (v) => `${v}${suffix}`);
+
+  useEffect(() => {
+    if (isInView) {
+      animate(count, value, { duration: 2, ease: "easeOut" });
+    }
+  }, [isInView, count, value]);
+
+  return <motion.span ref={ref}>{display}</motion.span>;
+};
+
+const containerVariants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.15 } },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 40, scale: 0.95 },
+  visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.6, ease: "easeOut" } },
+};
 
 const AboutSection = () => (
   <section id="nosotros" className="section-padding">
@@ -27,24 +61,50 @@ const AboutSection = () => (
         </p>
       </motion.div>
 
-      <div className="grid md:grid-cols-3 gap-8">
-        {features.map((f, i) => (
+      {/* Animated stats */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="grid grid-cols-3 gap-4 mb-16"
+      >
+        {stats.map((s) => (
+          <div key={s.label} className="text-center">
+            <p className="text-3xl md:text-5xl font-display font-bold text-primary">
+              <AnimatedCounter value={s.value} suffix={s.suffix} />
+            </p>
+            <p className="text-muted-foreground text-sm mt-2">{s.label}</p>
+          </div>
+        ))}
+      </motion.div>
+
+      <motion.div
+        className="grid md:grid-cols-3 gap-8"
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+      >
+        {features.map((f) => (
           <motion.div
             key={f.title}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: i * 0.15 }}
-            className="bg-card border border-border rounded-xl p-8 text-center hover:shadow-lg transition-shadow"
+            variants={itemVariants}
+            whileHover={{ y: -8, boxShadow: "0 20px 40px -15px hsl(var(--primary) / 0.2)" }}
+            className="bg-card border border-border rounded-xl p-8 text-center transition-colors"
           >
-            <div className="w-14 h-14 rounded-full bg-accent flex items-center justify-center mx-auto mb-5">
+            <motion.div
+              className="w-14 h-14 rounded-full bg-accent flex items-center justify-center mx-auto mb-5"
+              whileHover={{ rotate: 360 }}
+              transition={{ duration: 0.6 }}
+            >
               <f.icon className="w-7 h-7 text-accent-foreground" />
-            </div>
+            </motion.div>
             <h3 className="text-xl font-display font-semibold mb-3">{f.title}</h3>
             <p className="text-muted-foreground">{f.desc}</p>
           </motion.div>
         ))}
-      </div>
+      </motion.div>
     </div>
   </section>
 );
