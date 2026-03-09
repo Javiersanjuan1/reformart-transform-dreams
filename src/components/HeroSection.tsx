@@ -28,7 +28,7 @@ const HeroSection = () => {
   const textY = useTransform(scrollYProgress, [0, 1], [0, -80]);
   const opacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
 
-  const titleWords = "Reformas profesionales".split(" ");
+  const titleWords = "Obras, Reformas".split(" ");
 
   return (
     <section ref={ref} id="inicio" className="relative min-h-screen flex items-center justify-center overflow-hidden">
