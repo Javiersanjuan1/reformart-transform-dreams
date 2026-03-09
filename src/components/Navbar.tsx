@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
 import { Menu, X, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import logoImg from "@/assets/logo-reformart.png";
 
 const navLinks = [
   { label: "Inicio", href: "#inicio" },
