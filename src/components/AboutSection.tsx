@@ -54,11 +54,17 @@ const AboutSection = () => (
         <h2 className="text-3xl md:text-5xl font-display font-bold mb-6">
           Sobre <span className="text-gradient">nosotros</span>
         </h2>
-        <p className="text-muted-foreground text-lg max-w-3xl mx-auto leading-relaxed">
+        <motion.p
+          className="text-muted-foreground text-lg max-w-3xl mx-auto leading-relaxed"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+        >
           ReformArt es una empresa especializada en reformas integrales con atención personalizada.
           Utilizamos materiales de la más alta calidad y nos comprometemos con los plazos de entrega.
           Nuestro objetivo es transformar tu hogar en el espacio que siempre has soñado.
-        </p>
+        </motion.p>
       </motion.div>
 
       {/* Animated stats */}
@@ -69,13 +75,28 @@ const AboutSection = () => (
         transition={{ duration: 0.6 }}
         className="grid grid-cols-3 gap-4 mb-16"
       >
-        {stats.map((s) => (
-          <div key={s.label} className="text-center">
+        {stats.map((s, i) => (
+          <motion.div
+            key={s.label}
+            className="text-center"
+            initial={{ opacity: 0, scale: 0.5 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: i * 0.15, type: "spring", bounce: 0.3 }}
+          >
             <p className="text-3xl md:text-5xl font-display font-bold text-primary">
               <AnimatedCounter value={s.value} suffix={s.suffix} />
             </p>
-            <p className="text-muted-foreground text-sm mt-2">{s.label}</p>
-          </div>
+            <motion.p
+              className="text-muted-foreground text-sm mt-2"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.5 + i * 0.1 }}
+            >
+              {s.label}
+            </motion.p>
+          </motion.div>
         ))}
       </motion.div>
 
@@ -86,22 +107,33 @@ const AboutSection = () => (
         whileInView="visible"
         viewport={{ once: true }}
       >
-        {features.map((f) => (
+        {features.map((f, i) => (
           <motion.div
             key={f.title}
             variants={itemVariants}
-            whileHover={{ y: -8, boxShadow: "0 20px 40px -15px hsl(var(--primary) / 0.2)" }}
+            whileHover={{
+              y: -12,
+              boxShadow: "0 25px 50px -15px hsl(var(--primary) / 0.25)",
+              borderColor: "hsl(var(--primary) / 0.4)",
+            }}
             className="bg-card border border-border rounded-xl p-8 text-center transition-colors"
           >
             <motion.div
               className="w-14 h-14 rounded-full bg-accent flex items-center justify-center mx-auto mb-5"
-              whileHover={{ rotate: 360 }}
+              whileHover={{ rotate: 360, scale: 1.1, backgroundColor: "hsl(var(--primary))" }}
               transition={{ duration: 0.6 }}
             >
               <f.icon className="w-7 h-7 text-accent-foreground" />
             </motion.div>
             <h3 className="text-xl font-display font-semibold mb-3">{f.title}</h3>
             <p className="text-muted-foreground">{f.desc}</p>
+            {/* Animated underline */}
+            <motion.div
+              className="w-0 h-0.5 bg-primary mx-auto mt-4 rounded-full"
+              whileInView={{ width: "40%" }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.3 + i * 0.15 }}
+            />
           </motion.div>
         ))}
       </motion.div>
