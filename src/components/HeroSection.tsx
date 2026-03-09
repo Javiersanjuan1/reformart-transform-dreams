@@ -99,7 +99,8 @@ const HeroSection = () => {
           animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
           transition={{ duration: 0.8, delay: 0.7 }}
         >
-          <span className="text-gradient inline-block">para tue Instae Instalaciones    </motion.h1>
+          <span className="text-gradient inline-block">e Instalaciones</span>
+        </motion.h1>
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}
