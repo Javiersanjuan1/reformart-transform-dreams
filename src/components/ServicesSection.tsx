@@ -49,6 +49,7 @@ const ServicesSection = () => (
             variants={cardVariants}
             whileHover={{ y: -10, scale: 1.02 }}
             className="group bg-background border border-border rounded-xl p-8 hover:border-primary/40 hover:shadow-xl transition-all duration-300 cursor-pointer"
+            onClick={() => document.getElementById("contacto")?.scrollIntoView({ behavior: "smooth" })}
           >
             <motion.div
               className="w-12 h-12 rounded-lg bg-accent flex items-center justify-center mb-5 group-hover:bg-primary transition-colors duration-300"
