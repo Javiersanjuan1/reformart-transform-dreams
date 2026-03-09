@@ -28,7 +28,7 @@ const HeroSection = () => {
   const textY = useTransform(scrollYProgress, [0, 1], [0, -80]);
   const opacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
 
-  const titleWords = "Obras, Reformas".split(" ");
+  const titleWords = "Obras, Reformat(" ");
 
   return (
     <section ref={ref} id="inicio" className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -99,7 +99,7 @@ const HeroSection = () => {
           animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
           transition={{ duration: 0.8, delay: 0.7 }}
         >
-          <span className="text-gradient inline-block">para tu hogar</span>
+          <span className="text-gradient inline-block">para tue Instalaciones
         </motion.h1>
 
         <motion.p
