@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import logoImg from "@/assets/logo-reformart.png";
 
 const Footer = () => (
   <motion.footer
